@@ -2,7 +2,7 @@ package com.Amazon.test;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-//Author-BIBEKANAND MALLIKhghghfh
+//Author-BIBEKANAND MALLIK
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
