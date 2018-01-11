@@ -4,6 +4,8 @@
   <test name="Test">
     <classes>
       <class name="com.Amazon.test.ClassTest5"/>
+      <class name="com.Amazon.test.GmailLogin"/>
+      <class name="com.Amazon.test.RadiobuttonHandle2"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
