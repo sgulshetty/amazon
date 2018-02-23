@@ -1,21 +1,31 @@
- agent any
-    tools { 
-        maven 'Maven 3.5.2' 
-        jdk 'jdk8' 
-    }
+ pipeline {
+    agent any
+
     stages {
-        stage ('Initialize') {
+        stage ('Compile Stage') {
+
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
+                withMaven(maven : 'maven_3_5_2') {
+                    sh 'mvn clean compile'
+                }
             }
         }
 
-        stage ('Build') {
+        stage ('Testing Stage') {
+
             steps {
-                echo 'This is a minimal pipeline.'
+                withMaven(maven : 'maven_3_5_2') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'maven_3_5_2') {
+                    sh 'mvn deploy'
+                }
             }
         }
     }
