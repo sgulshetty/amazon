@@ -5,8 +5,8 @@
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3.5.2') {
-                    sh 'mvn clean compile'
+                withMaven(maven : 'maven_3_5_2') {
+                    bat 'mvn clean compile'
                 }
             }
         }
@@ -14,8 +14,8 @@
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3.5.2') {
-                    sh 'mvn test'
+                withMaven(maven : 'maven_3_5_2') {
+                    bat 'mvn test'
                 }
             }
         }
@@ -23,8 +23,8 @@
 
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3.5.2') {
-                    sh 'mvn deploy'
+                withMaven(maven : 'maven_3_5_2') {
+                    bat 'mvn deploy'
                 }
             }
         }
