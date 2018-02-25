@@ -1,17 +1,29 @@
- pipeline {
-    agent any
-    tools {
-        maven 'apache-maven-3.5.2'
-        jdk 'jdk8'
-    }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'printenv'
-                withMaven(mavenSettingsConfig: 'maven-settings-global') {
-                    sh 'mvn clean package'
-                }
-            }
-        }     
-    }    
-}
+ pipeline{
+       agent{
+          label "windows"
+         }
+       tools {
+            maven 'MAVEN_HOME'
+            jdk 'JAVA_HOME'
+         }
+       stages {
+           stage ('Initialize') {
+              steps {
+                bat '''
+                   echo "PATH=%PATH"
+                   echo "M2_HOME=%M2_HOME%"
+                '''
+               }
+             }
+            stage('Build'){
+               steps {
+                  bat- 'cd com.Amazon & mvn install'
+             }
+               post {
+                 success {
+                  junit 'com.Amazon/target/surefire-reports/*.xml'
+                         }
+                    }
+              }
+           }
+        }
