@@ -17,7 +17,7 @@
              }
             stage('Build'){
                steps {
-                  bat- 'cd com.Amazon & mvn install'
+                  bat - 'cd com.Amazon & mvn install'
              }
                post {
                  success {
